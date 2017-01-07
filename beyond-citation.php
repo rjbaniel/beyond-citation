@@ -3,7 +3,7 @@
 Plugin Name: Beyond Citation
 Description: Plugin for the Beyond Citation project.
 Version: 0.1.0
-Author: dan-jones, bgorges
+Author: Daniel Jones, Boone Gorges
 Text Domain: beyond-citation
 Domain Path: /languages
 */
