@@ -45,7 +45,7 @@ function bc_display_database_metabox( $post ) {
 
 function bc_save_database_fields() {
 	// Only continue if the saved post is a bc_database
-	if ( $_POST['post_type'] !== 'bc_database' )
+	if ( ! isset( $_POST['post_type'] ) || $_POST['post_type'] !== 'bc_database' )
 		return;
 
 	// nonce check
