@@ -39,7 +39,7 @@ function bc_get_database_info( $request ) {
 		)
 	);
 	if ( empty( $posts ) )
-		return 'No databases found.';
+		return null;
 
 	$database = $posts[0];
 	$return_array = array(
