@@ -33,11 +33,11 @@ function bc_display_database_metabox( $post ) {
 	// Display a <textarea> with a <label> for each postmeta field
 	foreach( $fields as $field_name => $field ) : ?>
 		<label for="<?php echo $field_name; ?>">
-			<?php echo $field['title']; ?>
+			<?php echo esc_html( $field['title'] ); ?>
 		</label>
 		<br>
-		<textarea class="bc-database-field" name="<?php echo $field_name; ?>" id="<?php echo $field_name; ?>">
-<?php echo get_post_meta( $post->ID, $field_name, true ); ?></textarea>
+		<textarea class="bc-database-field" name="<?php echo esc_attr( $field_name ); ?>" id="<?php echo esc_attr( $field_name ); ?>">
+<?php echo esc_html( get_post_meta( $post->ID, $field_name, true ) ); ?></textarea>
 	<?php endforeach;
 	
 	wp_nonce_field( 'bc_update_database_meta', 'bc_database_meta_nonce' );

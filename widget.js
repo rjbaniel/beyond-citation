@@ -4,7 +4,7 @@ for (var i = 0; i < widgetPlaceholders.length; i++) {
 	var database_name = widgetPlaceholders[i].dataset.database;
 	if (storageAvailable('localStorage')) {
 		// Uncomment the line below and reload the page when you need to bust the localStorage cache.
-		//localStorage.removeItem(database_name + '_widget');
+		localStorage.removeItem(database_name + '_widget');
 		if (localStorage.getItem(database_name + '_widget') && widget_localStorage_is_valid(database_name)) {
 			widgetPlaceholders[i].innerHTML = localStorage.getItem(database_name + '_widget');
 		} else {

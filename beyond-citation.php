@@ -17,6 +17,7 @@ add_action( 'init', 'bc_init' );
 function bc_includes() {
 	include_once( plugin_dir_path( __FILE__ ) . '/includes/database_cpt.php' );
 	include_once( plugin_dir_path( __FILE__ ) . '/includes/databases_api.php' );
+	include_once( plugin_dir_path( __FILE__ ) . '/includes/widget_shortcode.php' );
 }
 
 function bc_get_database_fields() {

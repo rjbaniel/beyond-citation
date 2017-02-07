@@ -1,0 +1,13 @@
+.bc-widget-gen__container {
+	display: none;
+	margin-top: 1em;
+}
+.bc-widget-gen__description {
+	margin-bottom: .5em;
+}
+.bc-widget-gen__html {
+	margin-top: 0;
+}
+.bc_visible {
+	display: block;
+}
