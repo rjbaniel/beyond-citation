@@ -37,7 +37,7 @@ function bc_display_database_metabox( $post ) {
 		</label>
 		<br>
 		<textarea class="bc-database-field" name="<?php echo esc_attr( $field_name ); ?>" id="<?php echo esc_attr( $field_name ); ?>">
-<?php echo esc_html( get_post_meta( $post->ID, $field_name, true ) ); ?></textarea>
+<?php echo esc_textarea( get_post_meta( $post->ID, $field_name, true ) ); ?></textarea>
 	<?php endforeach;
 	
 	wp_nonce_field( 'bc_update_database_meta', 'bc_database_meta_nonce' );
