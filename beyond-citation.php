@@ -19,11 +19,3 @@ function bc_includes() {
 	include_once( plugin_dir_path( __FILE__ ) . '/includes/databases_api.php' );
 	include_once( plugin_dir_path( __FILE__ ) . '/includes/widget_shortcode.php' );
 }
-
-function bc_get_database_fields() {
-	return array(
-		'_bc_access' => array (
-			'title' => 'Access',
-		)
-	);
-}
