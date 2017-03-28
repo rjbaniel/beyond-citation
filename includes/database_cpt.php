@@ -29,20 +29,26 @@ function bc_register_database_metabox() {
 
 function bc_display_database_metabox( $post ) {
 	$fields = bc_get_database_fields();
-
-	// Display a <textarea> with a <label> for each postmeta field
+	?>
+		<em>* means the field is required.</em>
+	<?php
 	foreach( $fields as $field_name => $field ) : ?>
 		<div class="bc-database-field">
 			<label for="<?php echo $field_name; ?>">
-				<?php echo esc_html( $field['title'] ); ?>
+				<?php
+					if ( $field['required'] )
+						$required = 'required';
+					
+					echo esc_html( $field['title'] );
+					if ( $required )
+						echo '*';
+				?>
 			</label>
 			<br>
 			<?php
 			$type = $field['type'];
 			$class_name_id_string = 'class="bc-database-input" name="' . esc_attr( $field_name ) . '" id="' . esc_attr( $field_name ) . '"';
 			$required = '';
-			if ( $field['required'] )
-				$required = 'required';
 			switch ( $type ) :
 				case 'textarea':
 					?>
@@ -149,7 +155,7 @@ function bc_get_database_fields() {
 			'type' => 'textarea',
 			'required' => true,
 		),
-		'date-range' => array(
+		'date_range' => array(
 			'title' => 'Date range',
 			'type' => 'text',
 			'required' => false,
