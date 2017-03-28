@@ -2,12 +2,39 @@
 	display: none;
 	margin-top: 1em;
 }
+.bc-widget-gen__embed-tabs {
+	margin-bottom: 1rem;
+}
+.bc-widget-gen__embed-tabs > .embed-tab {
+	display: inline-block;
+	padding: 1rem;
+	border: 1px solid;
+	cursor: pointer;
+}
+.bc-widget-gen__embed-tabs > .embed-tab:hover {
+	border: 1px solid;
+}
+.embed-tab:not(:last-child) {
+	margin-right: 1rem;
+}
+.bc-widget-gen__embed-tabs > .embed-tab--selected {
+	font-weight: bold;
+	border-width: 2px;
+	color: green;
+}
+.bc-widget-gen__embed-tabs > .embed-tab--selected:hover {
+	border: 2px solid;
+}
 .bc-widget-gen__description {
 	margin-bottom: .5em;
 }
 .bc-widget-gen__html {
 	margin-top: 0;
 }
+.bc-widget-gen__embed-section {
+	display: none;
+}
+
 .bc_visible {
 	display: block;
 }
