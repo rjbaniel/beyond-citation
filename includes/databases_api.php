@@ -42,10 +42,12 @@ function bc_get_database_info( $request ) {
 		return null;
 
 	$database = $posts[0];
+	$database_id = $database->ID;
 	$return_array = array(
-		'name' => $db_id,
-		'title' => get_the_title( $database->ID ),
-		'access' => get_post_meta( $database->ID, '_bc_access', true ),
+		'title' => get_the_title( $database_id ),
+		'overview' => get_post_meta( $database_id, 'bc_overview', true ),
+		'date' => get_post_meta( $database_id, 'date-range', true ),
+		'publisher' => get_post_meta( $database_id, 'publisher_name', true)
 	);
 
 	return $return_array;

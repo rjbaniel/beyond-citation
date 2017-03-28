@@ -4,7 +4,7 @@ for (var i = 0; i < widgetPlaceholders.length; i++) {
 	var database_name = widgetPlaceholders[i].dataset.database;
 	if (storageAvailable('localStorage')) {
 		// Uncomment the line below and reload the page when you need to bust the localStorage cache.
-		localStorage.removeItem(database_name + '_widget');
+		//localStorage.removeItem(database_name + '_widget');
 		if (localStorage.getItem(database_name + '_widget') && widget_localStorage_is_valid(database_name)) {
 			widgetPlaceholders[i].innerHTML = localStorage.getItem(database_name + '_widget');
 		} else {
@@ -47,8 +47,13 @@ function create_widget_html(bc_xhr) {
 		console.log('Sorry, we weren\'t able to find the database with ID: "' + bc_xhr.database_name + '".');
 		return;
 	} else {
+		var html = "<h3>" + response.title + "</h3>";
+		html += "<strong>Date Range: </strong>" + response.date + "<br>";
+		html += "<strong>Publisher: </strong>" + response.publisher + "<br>";
+		html += "<p>" + response.overview + "</p>";
+
 		// This will be replaced by real code to create the HTML for the widget.
-		return response.access;
+		return html;
 	}
 }
 
