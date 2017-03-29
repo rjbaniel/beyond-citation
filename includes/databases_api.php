@@ -46,7 +46,7 @@ function bc_get_database_info( $request ) {
 	$return_array = array(
 		'title' => get_the_title( $database_id ),
 		'overview' => get_post_meta( $database_id, 'bc_overview', true ),
-		'date' => get_post_meta( $database_id, 'date-range', true ),
+		'date' => get_post_meta( $database_id, 'date_range', true ),
 		'publisher' => get_post_meta( $database_id, 'publisher_name', true)
 	);
 
