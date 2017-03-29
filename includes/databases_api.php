@@ -47,7 +47,8 @@ function bc_get_database_info( $request ) {
 		'title' => get_the_title( $database_id ),
 		'overview' => get_post_meta( $database_id, 'bc_overview', true ),
 		'date' => get_post_meta( $database_id, 'date_range', true ),
-		'publisher' => get_post_meta( $database_id, 'publisher_name', true)
+		'publisher' => get_post_meta( $database_id, 'publisher_name', true),
+		'uri' => get_post_permalink( $database_id ),
 	);
 
 	return $return_array;

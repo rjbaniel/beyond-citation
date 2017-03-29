@@ -47,10 +47,12 @@ function bc_display_widget_generator( $atts ) {
 					$date = get_post_meta( $database_id, 'date_range', true );
 					$publisher = get_post_meta( $database_id, 'publisher_name', true );
 					$overview = get_post_meta( $database_id, 'bc_overview', true );
+					$permalink = get_post_permalink( $database_id );
 					?>&lt;h3&gt;<?php echo esc_html( $database_name ); ?>&lt;/h3&gt;
 &lt;strong&gt;Date Range: &lt;/strong&gt;<?php echo esc_html( $date ); ?>&lt;br&gt;
 &lt;strong&gt;Publisher: &lt;/strong&gt;<?php echo esc_html( $publisher ); ?>&lt;br&gt;
-&lt;p&gt;<?php echo esc_html( $overview ); ?>&lt;/p&gt;</pre>
+&lt;p&gt;<?php echo esc_html( $overview ); ?>&lt;/p&gt;
+&lt;a href="<?php echo esc_url( $permalink ); ?>"&gt;See more about <?php echo esc_html( $database_name ); ?>&lt;/a&gt;</pre>
 			</div>
 		</div>
 		<?php

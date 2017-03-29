@@ -51,7 +51,7 @@ function create_widget_html(bc_xhr) {
 		html += "<strong>Date Range: </strong>" + response.date + "<br>";
 		html += "<strong>Publisher: </strong>" + response.publisher + "<br>";
 		html += "<p>" + response.overview + "</p>";
-
+		html += '<a href="' + response.uri + '">See more about ' + response.title + '</a>';
 		// This will be replaced by real code to create the HTML for the widget.
 		return html;
 	}
