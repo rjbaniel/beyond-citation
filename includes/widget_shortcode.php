@@ -41,7 +41,7 @@ function bc_display_widget_generator( $atts ) {
 &lt;script type="text/javascript" src="<?php echo esc_url( $widget_script_url ); ?>"&gt;&lt;/script&gt;</pre>
 			</div>
 			<div id="embedHTML" class="bc-widget-gen__embed-section bc-widget-gen__embed-section--html">
-				<p>Use this information if you are not able to load external Javascript files on your website. Please note that this code will <em>not</em> be
+				<p class="bc-widget-gen__description">Use this information if you are not able to load external Javascript files on your website. Please note that this code will <em>not</em> be
 					automatically updated when we make updates here at Beyond Citation. You will need to re-generate the embed code and replace the older version.</p>
 				<pre class="bc-widget-gen__code"><?php
 					$date = get_post_meta( $database_id, 'date_range', true );
