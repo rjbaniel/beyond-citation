@@ -33,7 +33,7 @@ function bc_display_database_metabox( $post ) {
 		<em>* means the field is required.</em>
 	<?php
 	foreach( $fields as $field_name => $field ) : ?>
-		<div class="bc-database-field">
+		<div class="bc-database-field" style="margin-bottom: .5rem;">
 			<label for="<?php echo $field_name; ?>">
 				<?php
 					if ( $field['required'] )
@@ -58,7 +58,7 @@ function bc_display_database_metabox( $post ) {
 					continue;
 				case 'text':
 					?>
-					<input type="text" value="<?php echo esc_attr( get_post_meta( $post->ID, $field_name, true ) ); ?>" <?php echo $class_name_id_string; ?> <?php echo $required; ?>> 
+					<input type="text" size="75" value="<?php echo esc_attr( get_post_meta( $post->ID, $field_name, true ) ); ?>" <?php echo $class_name_id_string; ?> <?php echo $required; ?>> 
 					<?php
 					continue;
 				case 'checkbox':
@@ -92,7 +92,7 @@ function bc_display_database_metabox( $post ) {
 					$options = $field['options'];
 					$selected_options = get_post_meta( $post->ID, $field_name, true );
 					?>
-					<p>Select all that apply</p>
+					<em>Select all that apply</em><br>
 					<?php
 					foreach ( $options as $option ) :
 						$checked = '';
@@ -109,15 +109,17 @@ function bc_display_database_metabox( $post ) {
 							name="<?php echo esc_attr( $field_name ) . '[]'; ?>"
 							value="<?php echo esc_attr( $option['value'] ); ?>"
 							class="bc-database-input"
-							id="$option['value']"
+							id="<?php echo $option['value']; ?>"
 							<?php echo $checked; ?>
 						>
-						<?php echo esc_html( $option['display'] ); ?>
-						</input>
+							<label for="<?php echo $option['value']; ?>">
+								<?php echo esc_html( $option['display'] ); ?>
+							</label>
+						</input><br>
 						<?php
 					endforeach;
 					continue;
-			endswitch
+			endswitch;
 			?>
 		</div>
 	<?php endforeach;
@@ -153,6 +155,11 @@ function bc_get_database_fields() {
 		'bc_overview' => array(
 			'title' => 'BC Overview',
 			'type' => 'textarea',
+			'required' => true,
+		),
+		'bc_profile_link' => array(
+			'title' => 'Link to full BC content for database',
+			'type' => 'text',
 			'required' => true,
 		),
 		'date_range' => array(
@@ -237,7 +244,7 @@ function bc_get_database_fields() {
 		),
 		'original_catalog' => array(
 			'title' => 'Original catalogue',
-			'type' => 'text',
+			'type' => 'textarea',
 			'required' => false,
 		),
 		'original_microfilm' => array(
