@@ -9,7 +9,7 @@ function bc_register_database_cpt() {
 		'reweirte'			=> array(
 			'slug' => __( 'database', 'beyond-citation' ),
 		),
-		'supports'			=> array( 'title', 'editor' ),
+		'supports'			=> array( 'title', 'editor', 'thumbnail' ),
 		'register_meta_box_cb' => 'bc_register_database_metabox'
 	);
 	
