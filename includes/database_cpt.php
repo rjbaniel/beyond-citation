@@ -2,7 +2,7 @@
 
 function bc_register_database_cpt() {
 	$args = array(
-		'label'				=> __( 'Databases', 'beyond-citation'),		
+		'label'				=> __( 'Databases', 'beyond-citation'),
 		'description'		=> 'An academic database',
 		'public'			=> true,
 		'capability_type'	=> 'post',
@@ -12,12 +12,12 @@ function bc_register_database_cpt() {
 		'supports'			=> array( 'title', 'editor', 'thumbnail' ),
 		'register_meta_box_cb' => 'bc_register_database_metabox'
 	);
-	
-	register_post_type( 'bc_database', $args );	
+
+	register_post_type( 'bc_database', $args );
 }
 
 function bc_register_database_metabox() {
-	add_meta_box( 
+	add_meta_box(
 		'bc_database_info',
 		__( 'Database Info', 'beyond-citation' ),
 		'bc_display_database_metabox',
@@ -38,7 +38,7 @@ function bc_display_database_metabox( $post ) {
 				<?php
 					if ( $field['required'] )
 						$required = 'required';
-					
+
 					echo esc_html( $field['title'] );
 					if ( $required )
 						echo '*';
@@ -58,7 +58,7 @@ function bc_display_database_metabox( $post ) {
 					continue;
 				case 'text':
 					?>
-					<input type="text" size="75" value="<?php echo esc_attr( get_post_meta( $post->ID, $field_name, true ) ); ?>" <?php echo $class_name_id_string; ?> <?php echo $required; ?>> 
+					<input type="text" size="75" value="<?php echo esc_attr( get_post_meta( $post->ID, $field_name, true ) ); ?>" <?php echo $class_name_id_string; ?> <?php echo $required; ?>>
 					<?php
 					continue;
 				case 'checkbox':
@@ -123,7 +123,7 @@ function bc_display_database_metabox( $post ) {
 			?>
 		</div>
 	<?php endforeach;
-	
+
 	wp_nonce_field( 'bc_update_database_meta', 'bc_database_meta_nonce' );
 }
 
