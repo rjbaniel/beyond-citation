@@ -6,7 +6,7 @@ function bc_register_database_cpt() {
 		'description'		=> 'An academic database',
 		'public'			=> true,
 		'capability_type'	=> 'post',
-		'reweirte'			=> array(
+		'rewrite'			=> array(
 			'slug' => __( 'database', 'beyond-citation' ),
 		),
 		'supports'			=> array( 'title', 'editor', 'thumbnail' ),
