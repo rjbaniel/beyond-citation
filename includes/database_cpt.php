@@ -281,7 +281,7 @@ function bc_get_database_fields() {
 			'type' => 'textarea',
 			'required' => false,
 		),
-		'link_wordlcat' => array(
+		'link_worldcat' => array(
 			'title' => 'Worldcat link',
 			'User description' => 'To see the library closest to you that has access: ',
 			'type' => 'text',
