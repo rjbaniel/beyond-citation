@@ -49,34 +49,38 @@ function bc_display_database_metabox( $post ) {
 			$type = $field['type'];
 			$class_name_id_string = 'class="bc-database-input" name="' . esc_attr( $field_name ) . '" id="' . esc_attr( $field_name ) . '"';
 			$required = '';
+
+			$field_value = bc_get_database_field_value( $field_name, $post->ID );
+			$disabled = ! $field['editable'] ? 'disabled="disabled"' : '';
+
 			switch ( $type ) :
 				case 'textarea':
 					?>
-					<textarea <?php echo $class_name_id_string; ?> <?php echo $required; ?> cols="50" rows="5"><?php
-						echo esc_textarea( get_post_meta( $post->ID, $field_name, true ) ); ?></textarea>
+					<textarea <?php echo $class_name_id_string; ?> <?php echo $required; ?> <?php echo $disabled; ?> cols="50" rows="5"><?php
+						echo esc_textarea( $field_value ); ?></textarea>
 					<?php
 					continue;
 				case 'text':
 					?>
-					<input type="text" size="75" value="<?php echo esc_attr( get_post_meta( $post->ID, $field_name, true ) ); ?>" <?php echo $class_name_id_string; ?> <?php echo $required; ?>>
+					<input type="text" size="75" value="<?php echo esc_attr( $field_value ); ?>" <?php echo $class_name_id_string; ?> <?php echo $required; ?> <?php echo $disabled; ?>>
 					<?php
 					continue;
 				case 'checkbox':
 					$checked = '';
-					if ( get_post_meta( $post->ID, $field_name, true ) )
+					if ( $field_value )
 						$checked = 'checked';
 					?>
-					<input type="checkbox" <?php echo $checked; ?> <?php echo $class_name_id_string; ?>>
+					<input type="checkbox" <?php echo $checked; ?> <?php echo $class_name_id_string; ?> <?php echo $disabled; ?>>
 					<?php
 					continue;
 				case 'select':
 					$options = $field['options'];
 					?>
-						<select <?php echo $class_name_id_string; ?>>
+						<select <?php echo $class_name_id_string; ?> <?php echo $disabled; ?>>
 							<?php
 							foreach( $options as $option ) :
 								$selected = '';
-								if ( $option['value'] == get_post_meta( $post->ID, $field_name, true ) )
+								if ( $option['value'] == $field_value )
 									$selected = 'selected';
 							?>
 								<option value="<?php echo esc_attr( $option['value'] ) ?>" <?php echo $selected; ?>>
@@ -90,7 +94,7 @@ function bc_display_database_metabox( $post ) {
 					continue;
 				case 'checkboxes':
 					$options = $field['options'];
-					$selected_options = get_post_meta( $post->ID, $field_name, true );
+					$selected_options = $field_value;
 					?>
 					<em>Select all that apply</em><br>
 					<?php
@@ -156,26 +160,31 @@ function bc_get_database_fields() {
 			'title' => 'BC Overview',
 			'type' => 'textarea',
 			'required' => true,
+			'editable' => true,
 		),
 		'bc_profile_link' => array(
 			'title' => 'Link to full BC content for database',
 			'type' => 'text',
 			'required' => true,
+			'editable' => false,
 		),
 		'date_range' => array(
 			'title' => 'Date range',
 			'type' => 'text',
 			'required' => false,
+			'editable' => true,
 		),
 		'publisher_name' => array(
 			'title' => 'Publisher',
 			'type' => 'text',
 			'required' => true,
+			'editable' => true,
 		),
 		'link_publisher_about_page' => array(
 			'title' => 'Publisher About page',
 			'type' => 'text',
 			'required' => true,
+			'editable' => true,
 		),
 		'type_object' => array(
 			'title' => 'Object type',
@@ -211,41 +220,49 @@ function bc_get_database_fields() {
 				),
 			),
 			'required' => true,
+			'editable' => true,
 		),
 		'geographic_location_original_materials' => array(
 			'title' => 'Location of original materials',
 			'type' => 'text',
 			'required' => false,
+			'editable' => true,
 		),
 		'geographic_location_subject' => array(
 			'title' => 'Location of subject matter',
 			'type' => 'text',
 			'required' => false,
+			'editable' => true,
 		),
 		'image_exportable' => array(
 			'title' => 'Exportable image',
 			'type' => 'checkbox',
 			'required' => false,
+			'editable' => true,
 		),
 		'facsimile_image' => array(
 			'title' => 'Facsimile image',
 			'type' => 'checkbox',
 			'required' => false,
+			'editable' => true,
 		),
 		'full_text_searchable' => array(
 			'title' => 'Full text searchable',
 			'type' => 'checkbox',
 			'required' => true,
+			'editable' => true,
 		),
 		'link_titles_list' => array(
 			'title' => 'Titles list link',
 			'type' => 'text',
 			'required' => false,
+			'editable' => true,
 		),
 		'original_catalog' => array(
 			'title' => 'Original catalogue',
 			'type' => 'textarea',
 			'required' => false,
+			'editable' => true,
 		),
 		'original_microfilm' => array(
 			'title' => 'Original microfilm',
@@ -265,58 +282,93 @@ function bc_get_database_fields() {
 				),
 			),
 			'required' => false,
+			'editable' => true,
 		),
 		'original_sources' => array(
 			'title' => 'Original sources',
 			'type' => 'textarea',
 			'required' => false,
+			'editable' => true,
 		),
 		'history' => array(
 			'title' => 'History/Provenance',
 			'type' => 'textarea',
 			'required' => true,
+			'editable' => true,
 		),
 		'third_party_reviews' => array(
 			'title' => 'Reviews',
 			'type' => 'textarea',
 			'required' => false,
+			'editable' => true,
 		),
 		'link_worldcat' => array(
 			'title' => 'Worldcat link',
 			'User description' => 'To see the library closest to you that has access: ',
 			'type' => 'text',
 			'required' => false,
+			'editable' => true,
 		),
 		'access' => array(
 			'title' => 'Access',
 			'type' => 'textarea',
 			'required' => true,
+			'editable' => true,
 		),
 		'ill_conditions' => array(
 			'title' => 'InterLibrary Loan Conditions',
 			'type' => 'textarea',
 			'required' => false,
+			'editable' => true,
 		),
 		'info_from_publisher' => array(
 			'title' => 'Info from Publisher',
 			'type' => 'textarea',
 			'required' => false,
+			'editable' => true,
 		),
 		'conversations' => array(
 			'title' => 'Conversations',
 			'type' => 'textarea',
 			'required' => true,
+			'editable' => true,
 		),
 		'citing' => array(
 			'title' => 'Citing',
 			'type' => 'textarea',
 			'required' => true,
+			'editable' => true,
 		),
 		'bc_editor_entry' => array(
 			'title' => 'BC Editor Entry',
 			'type' => 'textarea',
 			'required' => true,
+			'editable' => true,
 		),
 	);
 	return $fields;
+}
+
+/**
+ * Get value for a database field.
+ *
+ * @param string $field_name
+ */
+function bc_get_database_field_value( $field_name, $post_id = null ) {
+	if ( null === $post_id && is_singular( 'bc_database' ) ) {
+		$post_id = get_queried_object_id();
+	}
+
+	$value = '';
+
+	switch ( $field_name ) {
+		case 'bc_profile_link' :
+			$value = get_permalink( $post_id );
+
+		default :
+			$value = get_post_meta( $post_id, $field_name, true );
+		break;
+	}
+
+	return $value;
 }
