@@ -8,6 +8,8 @@ Text Domain: beyond-citation
 Domain Path: /languages
 */
 
+define( 'BEYONDCITATION_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
 function bc_init() {
 	bc_includes();
 	bc_register_database_cpt();

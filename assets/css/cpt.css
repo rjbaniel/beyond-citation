@@ -1,0 +1,5 @@
+#bc_database_info textarea {
+	width: 100%;
+	resize: both;
+	max-width: 100%;
+}

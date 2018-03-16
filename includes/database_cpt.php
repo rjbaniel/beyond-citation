@@ -25,6 +25,8 @@ function bc_register_database_metabox() {
 		'normal',
 		'high'
 	);
+
+	wp_enqueue_style( 'beyond-citation-cpt', BEYONDCITATION_PLUGIN_URL . 'assets/css/cpt.css' );
 }
 
 function bc_display_database_metabox( $post ) {
