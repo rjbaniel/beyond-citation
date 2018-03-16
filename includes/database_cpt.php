@@ -215,8 +215,20 @@ function bc_get_database_fields() {
 					'display' => 'Artifacts',
 				),
 				array(
-					'value' => 'media',
-					'display' => 'Media',
+					'value' => 'articles',
+					'display' => 'Articles',
+				),
+				array(
+					'value' => 'maps',
+					'display' => 'Maps',
+				),
+				array(
+					'value' => 'books',
+					'display' => 'Books',
+				),
+				array(
+					'value' => 'time-based-media',
+					'display' => 'Time-based media',
 				),
 			),
 			'required' => true,
