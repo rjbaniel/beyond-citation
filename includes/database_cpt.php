@@ -260,8 +260,8 @@ function bc_get_database_fields() {
 		),
 		'full_text_searchable' => array(
 			'title' => 'Full text searchable',
-			'type' => 'checkbox',
-			'required' => true,
+			'type' => 'text',
+			'required' => false,
 			'editable' => true,
 		),
 		'link_titles_list' => array(
