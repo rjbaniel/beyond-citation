@@ -317,7 +317,7 @@ function bc_get_database_fields() {
 			'editable' => true,
 		),
 		'link_worldcat' => array(
-			'title' => 'Worldcat link',
+			'title' => 'WorldCat link',
 			'User description' => 'To see the library closest to you that has access: ',
 			'type' => 'text',
 			'required' => false,
