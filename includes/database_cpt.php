@@ -272,8 +272,14 @@ function bc_get_database_fields() {
 			'required' => false,
 			'editable' => true,
 		),
+		'history' => array(
+			'title' => 'History/Provenance',
+			'type' => 'textarea',
+			'required' => true,
+			'editable' => true,
+		),
 		'original_catalog' => array(
-			'title' => 'Original catalogue',
+			'title' => 'Original catalog',
 			'type' => 'textarea',
 			'required' => false,
 			'editable' => true,
@@ -302,12 +308,6 @@ function bc_get_database_fields() {
 			'title' => 'Original sources',
 			'type' => 'textarea',
 			'required' => false,
-			'editable' => true,
-		),
-		'history' => array(
-			'title' => 'History/Provenance',
-			'type' => 'textarea',
-			'required' => true,
 			'editable' => true,
 		),
 		'third_party_reviews' => array(
