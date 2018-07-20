@@ -25,7 +25,7 @@ function request_widget_html(database_name, index) {
 	bc_xhr.database_name = database_name;
 	bc_xhr.placeholder_index = index;
 	bc_xhr.addEventListener('load', insert_widget_html);
-	bc_xhr.open("GET", "http://testwp.org/wp-json/beyond_citation/v1/databases/" + database_name);
+	bc_xhr.open("GET", "https://beyondcitation.org/wp-json/beyond_citation/v1/databases/" + database_name);
 	bc_xhr.send();
 }
 function insert_widget_html() {
