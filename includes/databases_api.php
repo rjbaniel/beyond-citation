@@ -22,7 +22,12 @@ function bc_register_routes() {
 add_action( 'rest_api_init', 'bc_register_routes' );
 
 function bc_get_databases( $request ) {
-	$posts = get_posts( array( 'post_type' => 'bc_database' ) );
+	$posts = get_posts(
+		array(
+			'post_type'      => 'bc_database',
+			'posts_per_page' => -1,
+		)
+	);
 	if ( empty( $posts ) )
 		return null;
 	$databases = wp_list_pluck( $posts, 'post_name' );
