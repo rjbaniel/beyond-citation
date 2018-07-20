@@ -59,7 +59,7 @@ function bc_get_database_info( $request ) {
 		'overview' => get_post_meta( $database_id, 'bc_overview', true ),
 		'date' => get_post_meta( $database_id, 'date_range', true ),
 		'publisher' => get_post_meta( $database_id, 'publisher_name', true),
-		'uri' => esc_url( bc_get_database_field_value( 'bc_profile_link', $database_id ) ),
+		'uri' => esc_url( $uri ),
 	);
 
 	return $return_array;
