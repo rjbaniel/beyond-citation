@@ -48,6 +48,12 @@ function bc_get_database_info( $request ) {
 
 	$database = $posts[0];
 	$database_id = $database->ID;
+
+	$uri = bc_get_database_field_value( 'bc_profile_link', $database_id );
+	if ( ! $uri ) {
+		$uri = get_permalink( $database_id );
+	}
+
 	$return_array = array(
 		'title' => get_the_title( $database_id ),
 		'overview' => get_post_meta( $database_id, 'bc_overview', true ),
