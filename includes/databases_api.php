@@ -37,7 +37,7 @@ function bc_get_databases( $request ) {
 function bc_get_database_info( $request ) {
 	$params = $request->get_params();
 	$db_id = $params['id'];
-	
+
 	$posts = get_posts( array(
 			'post_type' => 'bc_database',
 			'name' => $db_id,
