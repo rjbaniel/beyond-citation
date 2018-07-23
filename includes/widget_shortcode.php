@@ -59,7 +59,7 @@ function bc_display_widget_generator( $atts ) {
 	else :
 	?>
 		<p>Sorry, we weren't able to generate an embed code for this database ID.</p>
-	<?php	
+	<?php
 	endif;
 	return ob_get_clean();
 }
